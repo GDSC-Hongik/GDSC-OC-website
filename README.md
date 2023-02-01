@@ -32,21 +32,10 @@ GDSC 홍익 오픈 커뮤니티 회원가입을 위해 firebase hosting에 배�
       firebase use --add
       ```
 
-   4. Firebase project settings에서 web app을 생성 후 `firebaseConfig`를 `src/lib/firebaseConfig.json`에 저장
+   4. Firebase project settings에서 web app을 생성 후 `firebaseConfig`를
+      [`src/lib/firebaseConfig.json`](src/lib/firebaseConfig.json)에 저장
 
       - [이 링크](https://console.firebase.google.com/u/0/project/_/settings/general)를 클릭 후 프로젝트를 선택하면 해당 페이지로 이동합니다
-      - firebase config 구조:
-        ```json
-        {
-        	"apiKey": "...",
-        	"authDomain": "...",
-        	"projectId": "...",
-        	"storageBucket": "...",
-        	"messagingSenderId": "...",
-        	"appId": "...",
-        	"measurementId": "..."
-        }
-        ```
 
 4. [http://localhost:5173](http://localhost:5173)에서 실행
 
