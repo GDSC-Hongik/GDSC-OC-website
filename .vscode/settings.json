@@ -1,0 +1,6 @@
+{
+	"cSpell.words": ["flowbite", "GDSC", "popperjs", "tailwindcss"],
+
+	// ignore tailwind warnings
+	"css.lint.unknownAtRules": "ignore"
+}
