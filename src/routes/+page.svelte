@@ -14,9 +14,20 @@
 	import { Button, P } from "flowbite-svelte"
 	import { onMount } from "svelte"
 
+	enum AuthState {
+		uninitialized,
+		signedIn,
+		notSignedIn,
+	}
+
 	let app: FirebaseApp
 	let auth: Auth
-	let isSignedIn = false
+	let authState: AuthState = AuthState.uninitialized
+
+	// fallback if auth state check hangs
+	setTimeout(() => {
+		if (authState == AuthState.uninitialized) authState = AuthState.notSignedIn
+	}, 1000)
 
 	async function login() {
 		const provider = new GithubAuthProvider()
@@ -30,7 +41,7 @@
 		app = initializeApp(firebaseConfig)
 		auth = getAuth(app)
 		auth.onAuthStateChanged(() => {
-			if (auth.currentUser) isSignedIn = true
+			authState = auth.currentUser ? AuthState.signedIn : AuthState.notSignedIn
 		})
 
 		if (dev) connectAuthEmulator(auth, "http://localhost:9099")
@@ -44,10 +55,12 @@
 </head>
 
 <div class="flex flex-col gap-3">
-	{#if isSignedIn}
+	{#if authState == AuthState.uninitialized}
+		<P size="2xl">가입 상태 확인 중</P>
+	{:else if authState == AuthState.signedIn}
 		<P size="2xl">가입 완료. 창을 닫으셔도 좋습니다.</P>
 		<Button on:click={login}>다른 GitHub 계정으로 가입</Button>
-	{:else}
+	{:else if authState == AuthState.notSignedIn}
 		<Button on:click={login}>GitHub 계정으로 등록</Button>
 	{/if}
 </div>
