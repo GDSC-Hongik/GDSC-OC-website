@@ -63,7 +63,7 @@
 	<title>GDSC Open Community</title>
 </svelte:head>
 
-<div class="flex flex-col gap-3">
+<div class="m-5 flex flex-col gap-3">
 	{#if authState == AuthState.uninitialized}
 		<P size="2xl">가입 상태 확인 중</P>
 	{:else if authState == AuthState.signedIn}
