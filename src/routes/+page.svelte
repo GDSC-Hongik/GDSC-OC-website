@@ -59,9 +59,9 @@
 	})
 </script>
 
-<head>
+<svelte:head>
 	<title>GDSC Open Community</title>
-</head>
+</svelte:head>
 
 <div class="flex flex-col gap-3">
 	{#if authState == AuthState.uninitialized}
