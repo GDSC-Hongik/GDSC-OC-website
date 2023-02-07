@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { dev } from "$app/environment"
 	import firebaseConfig from "$lib/firebaseConfig.json"
+	import { toast } from "@zerodevx/svelte-toast"
 	import { type FirebaseApp, initializeApp } from "firebase/app"
 	import {
 		type Auth,
@@ -37,6 +38,14 @@
 		await signInWithRedirect(auth, provider)
 	}
 
+	/**
+	 * AuthState가 signedIn일 시에만 작동
+	 */
+	async function copyUIDToClipboard() {
+		await navigator.clipboard.writeText(auth.currentUser?.uid || "")
+		toast.push("복사됨")
+	}
+
 	onMount(async () => {
 		app = initializeApp(firebaseConfig)
 		auth = getAuth(app)
@@ -58,7 +67,11 @@
 	{#if authState == AuthState.uninitialized}
 		<P size="2xl">가입 상태 확인 중</P>
 	{:else if authState == AuthState.signedIn}
-		<P size="2xl">가입 완료. 창을 닫으셔도 좋습니다.</P>
+		<P size="2xl">
+			가입 완료. 디스코드 서버에서 "/등록" 명령어를 이용해 본인 인증 코드를
+			등록하세요.
+		</P>
+		<Button on:click={copyUIDToClipboard}>코드 복사</Button>
 		<Button on:click={login}>다른 GitHub 계정으로 가입</Button>
 	{:else if authState == AuthState.notSignedIn}
 		<Button on:click={login}>GitHub 계정으로 등록</Button>
