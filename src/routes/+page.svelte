@@ -60,7 +60,9 @@
 
 <div class="m-5 flex flex-col gap-3">
 	{#if authState == AuthState.uninitialized}
-		<P size="2xl">가입 상태 확인 중</P>
+		<Button on:click={login}>GitHub 계정으로 등록</Button>
+	{:else if authState == AuthState.notSignedIn}
+		<Button on:click={login}>GitHub 계정으로 등록</Button>
 	{:else if authState == AuthState.signedIn}
 		<P size="2xl">
 			가입 완료. 디스코드 서버에서 "/등록" 명령어를 이용해 본인 인증 코드를
@@ -68,7 +70,5 @@
 		</P>
 		<Button on:click={copyUIDToClipboard}>코드 복사</Button>
 		<Button on:click={login}>다른 GitHub 계정으로 가입</Button>
-	{:else if authState == AuthState.notSignedIn}
-		<Button on:click={login}>GitHub 계정으로 등록</Button>
 	{/if}
 </div>
