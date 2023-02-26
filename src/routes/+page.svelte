@@ -50,7 +50,7 @@
 
 		if (dev) connectAuthEmulator(auth, "http://localhost:9099")
 
-		setPersistence(auth, browserSessionPersistence)
+		await setPersistence(auth, browserSessionPersistence)
 	})
 </script>
 
