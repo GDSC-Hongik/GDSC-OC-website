@@ -25,11 +25,6 @@
 	let auth: Auth
 	let authState: AuthState = AuthState.uninitialized
 
-	// fallback if auth state check hangs
-	setTimeout(() => {
-		if (authState == AuthState.uninitialized) authState = AuthState.notSignedIn
-	}, 1000)
-
 	async function login() {
 		const provider = new GithubAuthProvider()
 		// https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
