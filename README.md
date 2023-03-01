@@ -1,8 +1,8 @@
 # GDSC 홍익 오픈 커뮤니티 웹사이트
 
-GDSC 홍익 오픈 커뮤니티 회원가입을 위해 firebase hosting에 배포된 정적 SvelteKit 앱입니다.
+GDSC 홍익 오픈 커뮤니티 회원가입을 위해 Digital Ocean App Platform에 배포된 SvelteKit 앱입니다.
 
-## 세팅
+## 개발 세팅
 
 1. [Node.JS](https://nodejs.org) 설치
 
@@ -29,7 +29,7 @@ GDSC 홍익 오픈 커뮤니티 회원가입을 위해 firebase hosting에 배�
    3. 프로젝트 루트 디렉토리에서 다음을 실행하여 사용할 Firebase 프로젝트를 선택
 
       ```
-      firebase use --add
+      firebase use
       ```
 
    4. Firebase project settings에서 web app을 생성 후 `firebaseConfig`를
@@ -52,5 +52,33 @@ GDSC 홍익 오픈 커뮤니티 회원가입을 위해 firebase hosting에 배�
 6. Production build 실행
 
    ```
-   npm run preview
+   node build/index.js
+   ```
+
+## production 세팅
+
+1. 환경 변수 설정
+
+   ```dosini
+   PUBLIC_FB_API_KEY=
+   PUBLIC_FB_AUTH_DOMAIN=
+   PUBLIC_FB_PROJECT_ID=
+   PUBLIC_FB_STORAGE_BUCKET=
+   PUBLIC_FB_MESSAGING_SENDER_ID=
+   PUBLIC_FB_APP_ID=
+   PUBLIC_FB_MEASUREMENT_ID=
+
+   PRIVATE_FB_API_KEY=
+   PRIVATE_FB_AUTH_DOMAIN=
+   PRIVATE_FB_PROJECT_ID=
+   PRIVATE_FB_STORAGE_BUCKET=
+   PRIVATE_FB_MESSAGING_SENDER_ID=
+   PRIVATE_FB_APP_ID=
+   PRIVATE_FB_MEASUREMENT_ID=
+   ```
+
+2. 실행
+
+   ```
+   # PORT=80 node build/index.js
    ```

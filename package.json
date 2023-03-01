@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@popperjs/core": "^2.11.6",
-		"@sveltejs/adapter-static": "^1.0.5",
+		"@sveltejs/adapter-node": "^1.2.0",
 		"@sveltejs/kit": "^1.0.0",
 		"@trivago/prettier-plugin-sort-imports": "^4.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -29,6 +29,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"firebase-admin": "^11.5.0",
 		"flowbite": "^1.6.3",
 		"flowbite-svelte": "^0.29.12",
 		"postcss": "^8.4.14",
