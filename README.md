@@ -1,4 +1,4 @@
-# GDSC 홍익 오픈 커뮤니티 웹사이트
+# GDSC Open Community 웹사이트
 
 GDSC 홍익 오픈 커뮤니티 회원가입을 위해 Digital Ocean App Platform에 배포된 SvelteKit 앱입니다.
 
