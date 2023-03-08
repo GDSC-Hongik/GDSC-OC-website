@@ -2,7 +2,6 @@ import { auth } from "../lib/firebase/firebase.client"
 import {
 	GithubAuthProvider,
 	type User,
-	createUserWithEmailAndPassword,
 	signInWithRedirect,
 	signOut,
 } from "firebase/auth"
@@ -25,10 +24,6 @@ export async function login() {
 	provider.addScope("user:email")
 
 	await signInWithRedirect(auth, provider)
-}
-
-export async function signup(email: string, password: string) {
-	await createUserWithEmailAndPassword(auth, email, password)
 }
 
 export async function logout() {
